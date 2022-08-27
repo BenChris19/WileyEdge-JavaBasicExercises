@@ -1,3 +1,5 @@
+package WileyEdgeExercises;
+
 
 import java.util.Scanner;
 
@@ -20,21 +22,21 @@ public class HealthyHearts {
      */
     public static void main(String args[]) {
         System.out.print("What is your age? ");
-        Scanner sc = new Scanner(System.in);
-        
-        try{
-            int age = sc.nextInt();
-            if(maxHeartRate(age) >0){
-                System.out.println("Your maximum heart rate should be "+maxHeartRate(age)+" beats per minute");
-                System.out.println("Your target HR Zone is "+(int)heartZone(maxHeartRate(age))[0]+
-                    " - "+(int)heartZone(maxHeartRate(age))[1]+" beats per minute");
-            }
-            else{
-                System.out.print("Please enter a valid age!");
-            }
-        }
-        catch(Exception e){
-            System.err.print("Please enter your age!");
-        }
+        try (Scanner sc = new Scanner(System.in)) {
+			try{
+			    int age = sc.nextInt();
+			    if(maxHeartRate(age) >0){
+			        System.out.println("Your maximum heart rate should be "+maxHeartRate(age)+" beats per minute");
+			        System.out.println("Your target HR Zone is "+(int)heartZone(maxHeartRate(age))[0]+
+			            " - "+(int)heartZone(maxHeartRate(age))[1]+" beats per minute");
+			    }
+			    else{
+			        System.out.print("Please enter a valid age!");
+			    }
+			}
+			catch(Exception e){
+			    System.err.print("Please enter your age!");
+			}
+		}
     }
 }

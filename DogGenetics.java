@@ -1,3 +1,5 @@
+package WileyEdgeExercises;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,11 +36,12 @@ public class DogGenetics {
      */
     public static void main(String args[]) {
         System.out.print("What is your dog's name? ");
-        Scanner sc = new Scanner(System.in);
-        String name=sc.nextLine();
-        
-        System.out.println("Well then, I have this highly reliable report on "+name+"'s prestigious background right here.");
-        System.out.println(name+"'s is:\n");
+        try (Scanner sc = new Scanner(System.in)) {
+			String name=sc.nextLine();
+			
+			System.out.println("Well then, I have this highly reliable report on "+name+"'s prestigious background right here.\n");
+			System.out.println(name+"'s is:\n");
+		}
         HashMap<String,Integer> breedPerc = breedsAndPercentage(); 
         for(String breed:breedPerc.keySet()){
             System.out.println(breedPerc.get(breed)+"% "+breed);
