@@ -2,11 +2,16 @@ package WileyEdgeExercises;
 
 
 /**
+ * A program which sums all the values of certain arrays and displays the results.
  *
  * @author benatunderwoodquintana
  */
 public class SummativeSums {
-
+    /**
+     * Method which runs through each element in an array and displays overall result.
+     * @param arr
+     * @return an number of all of the sums
+     */
     private static int sums(int[] arr){
         int res=0;
         for(int i: arr){
@@ -16,6 +21,7 @@ public class SummativeSums {
     }
 
     /**
+     * Main method with example of arrays with fixed values
      * @param args the command line arguments
      */
     public static void main(String args[]) {

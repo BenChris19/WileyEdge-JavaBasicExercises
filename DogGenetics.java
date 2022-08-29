@@ -9,18 +9,22 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
+ * A program which takes the name of a dog, and shows the percentage of each dog breeds.
  *
  * @author benatunderwoodquintana
  */
 public class DogGenetics {
-
+    /**
+     * Takes the breeds and calculates their respective percentages
+     * @return HashMap of breeds with respective percentages
+     */
     public static HashMap<String,Integer> breedsAndPercentage(){
         HashMap<String,Integer> breedPerc = new HashMap<>();
         List<String> dogBreeds = new ArrayList<>(Arrays.asList("St. Bernard","Chihuahua","Dramatic RedNosed Asian Pug","Common Cur",
                              "King Doberman","German Shepard","Bulldog","Poodle"));
         int percentage = 100;
         while(percentage>0){
-            int randPerc = new Random().nextInt(1, percentage+1);
+            int randPerc = new Random().nextInt(1, percentage+1);   //Random does not consider the max range, 101 int this case
             int randomBreed= new Random().nextInt(0, dogBreeds.size());
             breedPerc.put(dogBreeds.remove(randomBreed),randPerc);
             percentage-=randPerc;   
@@ -32,6 +36,7 @@ public class DogGenetics {
     
 
     /**
+     * Main method executes the program
      * @param args the command line arguments
      */
     public static void main(String args[]) {

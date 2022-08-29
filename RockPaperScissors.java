@@ -5,13 +5,18 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
+ * A java program which is able to play Rock Paper Scissors with the user, and can ask the user
+ * how many games they want to play.
  *
  * @author benatunderwoodquintana
  */
 public class RockPaperScissors {
 	
 	private static Scanner sc;
-
+        
+        /**
+        * We start by asking the user the number of games they want to play
+        */
 	private static void numberOfGames() {
 		int numOfGames = 0;
 		
@@ -22,29 +27,32 @@ public class RockPaperScissors {
         try (Scanner sc = new Scanner(System.in)) {
 			numOfGames=sc.nextInt();
 			
-        	if(numOfGames>10 || numOfGames<1){
+        	if(numOfGames>10 || numOfGames<1){ //Exit program if user has not inputed a number between 1 and 10
                 System.err.println("Please enter a suitable number!");
                 System.out.println("Game has ended");
             }
-        	else {
+        	else {  
         		System.out.println("Number of games "+numOfGames+"\n");
-        		playGames(numOfGames);
+        		playGames(numOfGames); //Start playing the game
         	}
         }
         catch(Exception e) {
         	System.err.print("Please enter a number!");
         }
 	}
-	
+        /**
+         * Play the number of games the user has entered
+         * @param numOfGames 
+         */
 	private static void playGames(int numOfGames) {
-		int[] results = new int[3];
+		int[] results = new int[3]; //Index 0 for tie, 1 for computer victories and 2 for human victories
 		sc = new Scanner(System.in);
 			for(int i=0;numOfGames>i;i++){
 				boolean appChoice = false;
 				while(!appChoice){
 					System.out.println("Please enter your choice \n1=Rock \n2=Paper \n3=Scissor ");
 					try  {
-						int choice=sc.nextInt();
+						int choice=sc.nextInt(); //Get choice from the user
 						
 			            if (choice>3 || choice<1){
 			                System.err.println("Please enter an appropiate value!");
@@ -60,13 +68,21 @@ public class RockPaperScissors {
 			        }
 				}
 			}
-			winner(results);
+			winner(results);    //Display winner message and if they want to play again
 	}
-	
+	/**
+         * Generates a random number with the choice of the computer
+         * @return a random number between 1 and 0
+         */
 	private static int compChoice() {
 		return new Random().nextInt(1,4);
 	}
-	
+	/**
+         * Gets the result of the user's choice and the computer's choice
+         * @param userChoice
+         * @param compChoice
+         * @return an integer where each number is the result of the rock paper scissors match
+         */
 	private static int verifyResult(int userChoice,int compChoice) {
 		String compItem = switch(compChoice) {
 			case 1 -> "Rock";
@@ -86,6 +102,10 @@ public class RockPaperScissors {
             System.out.println("User wins!");
             return 2;
         }
+        /**
+         * Displays a message showing who is the winner, and the results of all of the games
+         * and asks the user if they want to play again.
+         */
 	}
 	private static void winner(int[] results) {
         System.out.println("Game has ended!");
@@ -111,7 +131,7 @@ public class RockPaperScissors {
 			        switch (playAgain) {
 			            case "Yes" -> {
 			                System.out.print("Restarting... \n");
-			                numberOfGames();
+			                numberOfGames();//Play the game again
 			                againApp = true;
 			            }
 			            case "No" -> {
@@ -128,11 +148,19 @@ public class RockPaperScissors {
 			}
 
 	}
-	 
+    /**
+     * Execute the main method of the program
+     * @param args 
+     */
     public static void main(String[] args) {
     	numberOfGames();
     }
 }
+
+
+//Previous code 
+
+
 // public static void playGame(){
 //  Scanner sc = new Scanner(System.in);
 //  int[] res = playGames(numberOfGames(sc.nextInt()));
